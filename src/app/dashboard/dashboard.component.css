@@ -1,0 +1,44 @@
+button, mat-slide-toggle {
+  margin-bottom: 2rem;
+}
+
+div.listitem{
+  cursor: pointer;
+  color: #FFF;
+  background-color: #005276;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+
+div.listitem:hover{
+  background-color: #8ba2b5;
+}
+
+mat-grid-tile {
+  width: 600px;
+  background: lightblue;
+}
+
+div.cGrid{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+div.cCol{
+  display: inline-block;
+  margin: 30px 2px;
+  background: #FFF;
+  min-height: 500px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+div.firstCol {
+  width: 200px;
+}
+
+div.secondCol {
+  width: 800px;
+}
