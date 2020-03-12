@@ -1,14 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1E292E;">
+  <div style="width: 100px"></div>
+  <a class="navbar-brand" href="#">Colfondos</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="javascript:void(0)" (click)="getTasksList()">
+          Actualizar tareas <span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
 <div class="cGrid">
   <div class="cCol firstCol">
     <ngb-alert [type]="'light'" [dismissible]="false">
       <h4>Tareas Pendientes</h4>
-      <ngb-alert [type]="'info'" [dismissible]="false" class="listitem" *ngFor="let task of tasks" (click)="redirectToTask(task.id)">
+      <ngb-alert [type]="'info'" [dismissible]="false" class="listitem" *ngFor="let task of tasks" (click)="takeTask(task.id, task.displayDescription)">
         [{{task.id}}] - {{task.displayName}}
       </ngb-alert>
     </ngb-alert>
   </div>
   <div class="cCol secondCol">
-    <app-user-task></app-user-task>
+    <app-user-task *ngIf="basicDataTask" [taskId]="taskId"></app-user-task>
+    <ngb-alert [type]="'info'" [dismissible]="false" *ngIf="!basicDataTask"> Seleccione una tarea para continuar</ngb-alert>
   </div>
 </div>
 

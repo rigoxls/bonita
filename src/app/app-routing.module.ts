@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { UserTaskComponent } from './user-task/user-task.component';
+import { BasicDataTaskComponent } from './basic-data-task/basic-data-task.component';
 import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
@@ -21,8 +21,8 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'user-task',
-    component: UserTaskComponent,
+    path: 'basic-data-task',
+    component: BasicDataTaskComponent,
     canActivate: [ AuthGuardService ]
   },
 ];

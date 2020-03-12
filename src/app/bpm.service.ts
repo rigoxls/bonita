@@ -25,7 +25,7 @@ export class BpmService {
     await this.http.get<any>(`${config.bonitaUrl}/API/bpm/process?s=af_colfondos`,
       {headers}).subscribe(data => {
         localStorage.setItem('processInfo', JSON.stringify(data[0]));
-        // this.initProcess();
+        this.initProcess();
       },
       error => {
       });
@@ -63,19 +63,14 @@ export class BpmService {
     return tasks;
   }
 
-  executeTask(userTaskId) {
+  executeTask(userTaskId, data) {
     const sessionToken = this.cookieService.get('X-Bonita-API-Token');
     const processInfo = JSON.parse(localStorage.getItem('processInfo'));
     const headers = {
       'Content-Type': 'application/json',
       'X-Bonita-API-Token': sessionToken
     };
-    this.http.post<any>(`${config.bonitaUrl}/API/bpm/userTask/${userTaskId}/execution?assign=true`, {
-      afiliacionInput: {
-        Cedula: 123456,
-        Nombre: 'Rigo'
-      }
-    },
+    this.http.post<any>(`${config.bonitaUrl}/API/bpm/userTask/${userTaskId}/execution?assign=true`, data,
       {headers}).subscribe(data => {},
       error => {
         console.log(error);

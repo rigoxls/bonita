@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BpmService} from '../bpm.service';
 
 @Component({
   selector: 'app-user-task',
-  templateUrl: './user-task.component.html',
-  styleUrls: ['./user-task.component.css']
+  templateUrl: './basic-data-task.component.html',
+  styleUrls: ['./basic-data-task.component.css']
 })
-export class UserTaskComponent implements OnInit {
-  private taskId: string;
+export class BasicDataTaskComponent implements OnInit {
   private step1 = true;
   private step2 = false;
   private step3 = false;
@@ -16,6 +15,8 @@ export class UserTaskComponent implements OnInit {
   private step5 = false;
   private step6 = false;
   private formErrors = false;
+
+  @Input() taskId: string = null;
 
   private flagHideCompanyForm = false;
 
@@ -34,9 +35,9 @@ export class UserTaskComponent implements OnInit {
     salario: null,
     pep: null,
     apep: null,
-    TIP: null,
-    AC: null,
-    FE: null
+    tip: null,
+    ac: null,
+    fe: null
   };
 
   private validatedStep = false;
@@ -48,14 +49,10 @@ export class UserTaskComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.taskId = params.taskId;
-      this.sendDataToForm(this.taskId);
-    });
   }
 
-  sendDataToForm(taskId) {
-    //this.bpmService.executeTask(taskId);
+  sendDataToForm() {
+    this.bpmService.executeTask(this.taskId, this.formData);
   }
 
   nextForm(nextFormId) {
@@ -174,11 +171,7 @@ export class UserTaskComponent implements OnInit {
 
   hideCompanyForm(hide): void {
     this.formErrors = false;
-    this.flagHideCompanyForm = (hide) ? true : false;
-  }
-
-  enviarDatos() {
-    console.info(this.formData);
+    this.flagHideCompanyForm = !!(hide);
   }
 
 }

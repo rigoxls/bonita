@@ -66,19 +66,19 @@
       <div class="container">
         <p>¿Dónde trabajas?</p>
         <ngb-alert [dismissible]="false">
-          <input type="radio" id="empleado" name="tipoTrabajo" value="1" [(ngModel)]="formData.tipoTrabajo"
+          <input type="radio" id="empleado" name="tipoTrabajo" value=1 [(ngModel)]="formData.tipoTrabajo"
                  (click)="hideCompanyForm(false)" checked="checked">
           <label for="empleado">&nbsp; En una empresa</label><br>
         </ngb-alert>
 
         <ngb-alert [dismissible]="false">
-          <input type="radio" id="independiente" name="tipoTrabajo" value="2" [(ngModel)]="formData.tipoTrabajo"
+          <input type="radio" id="independiente" name="tipoTrabajo" value=2 [(ngModel)]="formData.tipoTrabajo"
                  (click)="hideCompanyForm(true)">
           <label for="independiente">&nbsp; Por cuenta propia</label><br>
         </ngb-alert>
 
         <ngb-alert [dismissible]="false">
-          <input type="radio" id="desempleado" name="tipoTrabajo" value="3" [(ngModel)]="formData.tipoTrabajo"
+          <input type="radio" id="desempleado" name="tipoTrabajo" value=3 [(ngModel)]="formData.tipoTrabajo"
                  (click)="hideCompanyForm(true)">
           <label for="desempleado">&nbsp; No trabajo actualmente</label>
         </ngb-alert>
@@ -179,25 +179,25 @@
       <hr>
       <div class="">
         <ngb-alert [dismissible]="false">
-          <input type="checkbox" id="vehicle1" name="TIP" value="1" [(ngModel)]="formData.TIP">
+          <input type="checkbox" id="vehicle1" name="TIP" value="1" [(ngModel)]="formData.tip">
           <label for="vehicle1">&nbsp; Autorizo para el tratamiento de la información personal</label><br>
         </ngb-alert>
 
         <ngb-alert [dismissible]="false">
-          <input type="checkbox" id="vehicle2" name="AC" value="1" [(ngModel)]="formData.AC">
+          <input type="checkbox" id="vehicle2" name="AC" value="1" [(ngModel)]="formData.ac">
           <label for="vehicle2">&nbsp; Autorizo con la finalidad de contactarme para el desarrollo de
             actividades de publicidad y servicios.</label><br>
         </ngb-alert>
 
         <ngb-alert [dismissible]="false">
-          <input type="checkbox" id="vehicle3" name="FE" value="1" [(ngModel)]="formData.FE">
+          <input type="checkbox" id="vehicle3" name="FE" value="1" [(ngModel)]="formData.fe">
           <label for="vehicle3">&nbsp; Estoy de acuerdo con las politicas de uso de firma electrónica.</label><br>
         </ngb-alert>
 
       </div>
     </ngb-alert>
     <div class="button-right">
-      <button type="button" class="btn btn-primary" (click)="enviarDatos()">
+      <button type="button" class="btn btn-primary" (click)="sendDataToForm()">
         Guardar y enviar datos
         <i class="fa fa-floppy-o" aria-hidden="true"></i>
       </button>

@@ -28,7 +28,7 @@ import { MatToolbarModule,
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { UserTaskComponent } from './user-task/user-task.component';
+import { BasicDataTaskComponent } from './basic-data-task/basic-data-task.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { UserTaskComponent } from './user-task/user-task.component';
     HomeComponent,
     DashboardComponent,
     LoginComponent,
-    UserTaskComponent
+    BasicDataTaskComponent
   ],
   imports: [
     BrowserModule,

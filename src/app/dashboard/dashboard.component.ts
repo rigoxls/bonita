@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BpmService} from '../bpm.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -10,12 +10,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   private tasks: Array<any>;
+  private basicDataTask = false;
+  private taskId = null;
 
   constructor(
     private bpmService: BpmService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.bpmService.getProcessInfo();
@@ -26,7 +29,17 @@ export class DashboardComponent implements OnInit {
     this.tasks = await this.bpmService.getTasksList();
   }
 
-  redirectToTask(taskId: number) {
-    //this.router.navigate(['user-task'], { queryParams: { taskId } });
+  takeTask(taskId: number, displayDescription: string) {
+    this.taskId = taskId;
+
+    switch (displayDescription) {
+      case 'basicDataTask':
+        this.basicDataTask = true;
+        break;
+    }
+  }
+
+  reloadTasks() {
+
   }
 }
