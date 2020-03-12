@@ -1,0 +1,11 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #AEAEB0;
+}
+
+h1 {
+  text-align: center;
+}

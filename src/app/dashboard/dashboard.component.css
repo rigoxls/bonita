@@ -1,0 +1,40 @@
+button, mat-slide-toggle {
+  margin-bottom: 2rem;
+}
+
+.listitem{
+  cursor: pointer;
+}
+
+div.listitem:hover{
+  background-color: #8ba2b5;
+}
+
+mat-grid-tile {
+  width: 600px;
+  background: lightblue;
+}
+
+div.cGrid{
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+div.cCol{
+  display: inline-block;
+  margin: 30px 2px;
+  background: #FFF;
+  min-height: 500px;
+  border-radius: 5px;
+}
+
+div.firstCol {
+  width: 200px;
+}
+
+div.secondCol {
+  width: 600px;
+  padding: 15px;
+}
+

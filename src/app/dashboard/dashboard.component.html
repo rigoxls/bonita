@@ -1,0 +1,19 @@
+<div class="cGrid">
+  <div class="cCol firstCol">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+      <h4>Tareas Pendientes</h4>
+      <ngb-alert [type]="'info'" [dismissible]="false" class="listitem" *ngFor="let task of tasks" (click)="redirectToTask(task.id)">
+        [{{task.id}}] - {{task.displayName}}
+      </ngb-alert>
+    </ngb-alert>
+  </div>
+  <div class="cCol secondCol">
+    <app-user-task></app-user-task>
+  </div>
+</div>
+
+
+
+
+
+

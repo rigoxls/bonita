@@ -1,0 +1,206 @@
+<ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="formErrors"> Validar datos requeridos en el formulario</ngb-alert>
+<form action="">
+  <div class="formContainer"  [ngClass]="{'hideContainer': step1===false}">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+    <h4> Ingresa tus datos de contacto</h4>
+      <hr>
+      <div class="container">
+        <label for="cedula">Número de la cédula de ciudadania</label>
+        <input type="text" id="cedula" name="cedula" [ngClass]="{'error': !formData.cedula && validatedStep}"
+               placeholder="Ej. 1045478210" [(ngModel)]="formData.cedula">
+
+        <label for="correo">¿Cuál es tú correo electrónico?</label>
+        <input type="text" id="correo" name="correo" [ngClass]="{'error': !formData.correo && validatedStep}"
+               placeholder="Ej. juan.perez@colfondos.com" [(ngModel)]="formData.correo">
+
+        <label for="celular">¿Cuál es tú  número celular?</label>
+        <input type="text" id="celular" name="celular" [ngClass]="{'error': !formData.celular && validatedStep}"
+               placeholder="Ej. 3205458789" [(ngModel)]="formData.celular">
+      </div><br>
+    </ngb-alert>
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="nextForm(2)">
+        Continuar
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="formContainer" [ngClass]="{'hideContainer': step2===false}">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+      <h4> ¿Dónde vives?</h4>
+      <hr>
+      <div class="container">
+        <label for="pais">¿País de residencia?</label>
+        <select id="pais" name="pais" [(ngModel)]="formData.pais">
+          <option value="colombia">Colombia</option>
+          <option value="canada">Canada</option>
+          <option value="usa">USA</option>
+        </select>
+
+        <label for="departamento">Departamento / Ciudad</label>
+        <input type="text" id="departamento" name="departamento" [ngClass]="{'error': !formData.departamento && validatedStep}"
+               placeholder="Ej. Bogotá D:C./Bogotá DC" [(ngModel)]="formData.departamento">
+
+        <label for="direccion">Dirección de la residencia</label>
+        <input type="text" id="direccion" name="direccion" [ngClass]="{'error': !formData.direccion && validatedStep}"
+               placeholder="Ej. Tv 76 nro 81 I 61" [(ngModel)]="formData.direccion">
+
+        <label for="telefono">Teléfono de residencia (opcional)</label>
+        <input type="text" id="telefono" name="telefono" [ngClass]="{'error': !formData.telefono && validatedStep}"
+               placeholder="Ej. 2616031" [(ngModel)]="formData.telefono">
+      </div>
+    </ngb-alert>
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="nextForm(3)">
+        Continuar
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="formContainer" [ngClass]="{'hideContainer': step3===false}">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+      <h4> Información vínculo laboral o contractual</h4>
+      <hr>
+      <div class="container">
+        <p>¿Dónde trabajas?</p>
+        <ngb-alert [dismissible]="false">
+          <input type="radio" id="empleado" name="tipoTrabajo" value="1" [(ngModel)]="formData.tipoTrabajo"
+                 (click)="hideCompanyForm(false)" checked="checked">
+          <label for="empleado">&nbsp; En una empresa</label><br>
+        </ngb-alert>
+
+        <ngb-alert [dismissible]="false">
+          <input type="radio" id="independiente" name="tipoTrabajo" value="2" [(ngModel)]="formData.tipoTrabajo"
+                 (click)="hideCompanyForm(true)">
+          <label for="independiente">&nbsp; Por cuenta propia</label><br>
+        </ngb-alert>
+
+        <ngb-alert [dismissible]="false">
+          <input type="radio" id="desempleado" name="tipoTrabajo" value="3" [(ngModel)]="formData.tipoTrabajo"
+                 (click)="hideCompanyForm(true)">
+          <label for="desempleado">&nbsp; No trabajo actualmente</label>
+        </ngb-alert>
+
+        <div class="informacionEmpresa" [ngClass]="{'hideContainer': flagHideCompanyForm}">
+          <label for="nit">Número de idenficación tributaria (NIT)</label>
+          <input type="text" id="nit" name="nit" [ngClass]="{'error': !formData.nit && validatedStep}"
+                 placeholder="Ej. 4784545877-5" [(ngModel)]="formData.nit">
+
+          <label for="razonSocial">Nombre o Razón Social</label>
+          <input type="text" id="razonSocial" name="razonSocial" [ngClass]="{'error': !formData.razonSocial && validatedStep}"
+                 placeholder="" [(ngModel)]="formData.razonSocial">
+
+          <label for="cargo">Cargo actual</label>
+          <input type="text" id="cargo" name="cargo" [ngClass]="{'error': !formData.cargo && validatedStep}"
+                 placeholder="Ej. Análista de datos" [(ngModel)]="formData.cargo">
+
+          <label for="salario">Salario</label>
+          <input type="text" id="salario" name="salario" [ngClass]="{'error': !formData.salario && validatedStep}"
+                 placeholder="" [(ngModel)]="formData.salario">
+        </div>
+
+      </div>
+    </ngb-alert>
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="nextForm(4)">
+        Continuar
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="formContainer" [ngClass]="{'hideContainer': step4===false}">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+      <h4> Personas públicamente expuestas - PEPs</h4>
+      <hr>
+      <div class="container">
+        <h5>¿Usted es PEP?</h5>
+        <br>
+        <p>
+          <ngb-alert [dismissible]="false">
+            PEP, es una persona expuesta públicamente. Persona natural nacional o extranjera que es o ha sido un funcionario de alta jerarquía en cualquier
+            rama del gobierno ejecutiva, legislativa, administrativa, militar o judical.
+          </ngb-alert>
+        </p>
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="formData.pep">
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" value="SI"> SI
+          </label>
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" value="NO"> NO
+          </label>
+        </div>
+      </div>
+    </ngb-alert>
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="nextForm(5)">
+        Continuar
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="formContainer" [ngClass]="{'hideContainer': step5===false}">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+      <h4> Personas públicamente expuestas - PEPs</h4>
+      <hr>
+      <div class="container">
+        <h5>¿Usted es familiar/asociado de una PEP?</h5>
+        <br>
+        <p>
+          <ngb-alert [dismissible]="false">
+            También son considerados PEP sus familiares inmediatos (cónyuge/pareja, padres, hermanos, hijos, abuelos, nietos, cuñados, suegors, yernos y nueras),
+            o asociados cercanos.
+          </ngb-alert>
+        </p>
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="formData.apep">
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" [value]="1"> SI
+          </label>
+          <label ngbButtonLabel class="btn-primary">
+            <input ngbButton type="radio" value="middle"> NO
+          </label>
+        </div>
+      </div>
+    </ngb-alert>
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="nextForm(6)">
+        Continuar
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="formContainer" [ngClass]="{'hideContainer': step6===false}">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+      <h4> ¿Autorizas las condiciones?</h4>
+      <hr>
+      <div class="">
+        <ngb-alert [dismissible]="false">
+          <input type="checkbox" id="vehicle1" name="TIP" value="1" [(ngModel)]="formData.TIP">
+          <label for="vehicle1">&nbsp; Autorizo para el tratamiento de la información personal</label><br>
+        </ngb-alert>
+
+        <ngb-alert [dismissible]="false">
+          <input type="checkbox" id="vehicle2" name="AC" value="1" [(ngModel)]="formData.AC">
+          <label for="vehicle2">&nbsp; Autorizo con la finalidad de contactarme para el desarrollo de
+            actividades de publicidad y servicios.</label><br>
+        </ngb-alert>
+
+        <ngb-alert [dismissible]="false">
+          <input type="checkbox" id="vehicle3" name="FE" value="1" [(ngModel)]="formData.FE">
+          <label for="vehicle3">&nbsp; Estoy de acuerdo con las politicas de uso de firma electrónica.</label><br>
+        </ngb-alert>
+
+      </div>
+    </ngb-alert>
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="enviarDatos()">
+        Guardar y enviar datos
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</form>
