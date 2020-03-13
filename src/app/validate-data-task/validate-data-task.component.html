@@ -1,0 +1,28 @@
+<ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="formErrors"> Validar datos requeridos en el formulario</ngb-alert>
+<form action="">
+  <div class="formContainer">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+      <h4> Vefificación de identidad</h4>
+      <hr>
+      <div class="container">
+        <label for="answer_1">Número de la cédula de ciudadania</label>
+        <input type="text" id="answer_1" name="answer_1" [ngClass]="{'error': !formData.answer_1 && validatedStep}"
+               placeholder="" [(ngModel)]="formData.answer_1">
+
+        <label for="answer_2">¿Cuál es tú correo electrónico?</label>
+        <input type="text" id="answer_2" name="answer_2" [ngClass]="{'error': !formData.answer_2 && validatedStep}"
+               placeholder="" [(ngModel)]="formData.answer_2">
+
+        <label for="answer_3">¿Cuál es tú  número celular?</label>
+        <input type="text" id="answer_3" name="answer_3" [ngClass]="{'error': !formData.answer_3 && validatedStep}"
+               placeholder="" [(ngModel)]="formData.answer_3">
+      </div><br>
+    </ngb-alert>
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="sendDataToForm()">
+        Continuar
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</form>

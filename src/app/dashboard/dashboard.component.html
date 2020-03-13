@@ -17,14 +17,22 @@
   <div class="cCol firstCol">
     <ngb-alert [type]="'light'" [dismissible]="false">
       <h4>Tareas Pendientes</h4>
-      <ngb-alert [type]="'info'" [dismissible]="false" class="listitem" *ngFor="let task of tasks" (click)="takeTask(task.id, task.displayDescription)">
-        [{{task.id}}] - {{task.displayName}}
-      </ngb-alert>
+      <div *ngFor="let task of tasks">
+        <ngb-alert [type]="'info'" [dismissible]="false" class="listitem"
+                   *ngIf="task.state === 'ready'"
+                   (click)="takeTask(task.id, task.displayDescription)">
+          [{{task.id}}] - {{task.displayName}}
+        </ngb-alert>
+      </div>
+
     </ngb-alert>
   </div>
   <div class="cCol secondCol">
     <app-user-task *ngIf="basicDataTask" [taskId]="taskId"></app-user-task>
-    <ngb-alert [type]="'info'" [dismissible]="false" *ngIf="!basicDataTask"> Seleccione una tarea para continuar</ngb-alert>
+    <app-validate-data-task *ngIf="securityQuestions" [taskId]="taskId"></app-validate-data-task>
+    <ngb-alert [type]="'info'" [dismissible]="false" *ngIf="!basicDataTask && !securityQuestions">
+      Seleccione una tarea para continuar
+    </ngb-alert>
   </div>
 </div>
 

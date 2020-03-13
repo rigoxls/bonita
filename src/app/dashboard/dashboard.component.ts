@@ -11,6 +11,7 @@ export class DashboardComponent implements OnInit {
 
   private tasks: Array<any>;
   private basicDataTask = false;
+  private securityQuestions = false;
   private taskId = null;
 
   constructor(
@@ -35,11 +36,12 @@ export class DashboardComponent implements OnInit {
     switch (displayDescription) {
       case 'basicDataTask':
         this.basicDataTask = true;
+        this.securityQuestions = false;
+        break;
+      case 'securityQuestions':
+        this.basicDataTask = false;
+        this.securityQuestions = true;
         break;
     }
-  }
-
-  reloadTasks() {
-
   }
 }
