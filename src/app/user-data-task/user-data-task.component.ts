@@ -9,7 +9,7 @@ import {BpmService} from '../bpm.service';
 export class UserDataTaskComponent implements OnInit {
 
   private formErrors = false;
-  private hideContainer = false;
+  private hideForm = false;
 
   @Input() taskId: string = null;
 
@@ -38,13 +38,13 @@ export class UserDataTaskComponent implements OnInit {
 
   sendDataToForm() {
     if (!this.formData.apellidos || !this.formData.nombres || !this.formData.fnacimiento
-      || !this.formData.ciudad || !this.formData.direccion) {
+      || !this.formData.ciudad) {
       this.formErrors = true;
       this.validatedStep = true;
       return false;
     } else {
       this.bpmService.executeTask(this.taskId, this.formData).then(() => {
-        this.hideContainer = true;
+        this.hideForm = true;
       });
     }
   }

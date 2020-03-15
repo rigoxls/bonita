@@ -1,8 +1,8 @@
 <ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="formErrors"> Validar datos requeridos en el formulario</ngb-alert>
 <form action="">
-  <div class="formContainer">
+  <div class="formContainer" [ngClass]="{'hideElement':hideForm}" >
     <ngb-alert [type]="'light'" [dismissible]="false">
-      <h4> Vefificación de identidad</h4>
+      <h4> Verificación de identidad</h4>
       <hr>
       <div class="container">
         <label for="answer_1">{{localVariables['question_1']}}</label>

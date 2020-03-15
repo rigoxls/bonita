@@ -1,0 +1,53 @@
+<ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="formErrors"> Validar datos requeridos en el formulario</ngb-alert><div class="formContainer">
+  <ngb-alert [type]="'light'" [dismissible]="false" [ngClass]="{'hideElement':hideForm}">
+    <h4> Para continuar acepta las condiciones</h4>
+    <hr>
+    <div class="">
+      <ngb-alert [dismissible]="false">
+        <input type="checkbox" id="answer_profile_1" name="answer_profile_1" value="1" [(ngModel)]="formData.answer_profile_1">
+        <label for="answer_profile_1">&nbsp; pregunta perfil 1</label><br>
+      </ngb-alert>
+
+      <ngb-alert [dismissible]="false">
+        <input type="checkbox" id="answer_profile_2" name="answer_profile_2" value="1" [(ngModel)]="formData.answer_profile_2">
+        <label for="answer_profile_2">&nbsp; pregunta perfil 2</label><br>
+      </ngb-alert>
+
+      <ngb-alert [dismissible]="false">
+        <input type="checkbox" id="answer_profile_3" name="answer_profile_3" value="1" [(ngModel)]="formData.answer_profile_3">
+        <label for="answer_profile_3">&nbsp;pregunta perfil 3</label><br>
+      </ngb-alert>
+
+      <ngb-alert [dismissible]="false">
+        <input type="checkbox" id="answer_profile_4" name="answer_profile_4" value="1" [(ngModel)]="formData.answer_profile_4">
+        <label for="answer_profile_4">&nbsp;pregunta perfil 3</label><br>
+      </ngb-alert>
+
+      <ngb-alert [dismissible]="false">
+        <input type="checkbox" id="answer_profile_5" name="answer_profile_5" value="1" [(ngModel)]="formData.answer_profile_5">
+        <label for="answer_profile_5">&nbsp;pregunta perfil 3</label><br>
+      </ngb-alert>
+
+    </div>
+
+    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="formData.validate_profile">
+      <label ngbButtonLabel class="btn-primary">
+        <input ngbButton type="radio" value="SI"> SI
+      </label>
+      <label ngbButtonLabel class="btn-primary">
+        <input ngbButton type="radio" value="NO"> NO
+      </label>
+    </div>
+    <br><br>
+    <label for="profile_comments">Comentarios</label>
+    <textarea type="text" id="profile_comments" name="profile_comments" [ngClass]="{'error': !formData.profile_comments && validatedStep}"
+              placeholder="" [(ngModel)]="formData.profile_comments"></textarea>
+
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="sendDataToForm()">
+        Guardar y enviar datos
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </button>
+    </div>
+  </ngb-alert>
+</div>

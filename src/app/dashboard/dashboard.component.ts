@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
   private basicDataTask = false;
   private securityQuestions = false;
   private userDataTask = false;
+  private validateRiskProfile = false;
+
   private taskId = null;
   private caseId = null;
 
@@ -42,19 +44,29 @@ export class DashboardComponent implements OnInit {
       case 'basicDataTask':
         this.basicDataTask = true;
         this.securityQuestions = false;
+        this.validateRiskProfile = false;
         this.userDataTask = false;
         break;
 
       case 'securityQuestions':
         this.basicDataTask = false;
         this.userDataTask = false;
+        this.validateRiskProfile = false;
         this.securityQuestions = true;
         break;
 
       case 'userData':
         this.userDataTask = true;
         this.basicDataTask = false;
+        this.validateRiskProfile = false;
         this.securityQuestions = false;
+        break;
+
+      case 'validateRiskProfile':
+        this.userDataTask = false;
+        this.basicDataTask = false;
+        this.securityQuestions = false;
+        this.validateRiskProfile = true;
         break;
     }
   }

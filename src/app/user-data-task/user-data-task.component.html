@@ -1,6 +1,6 @@
 <ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="formErrors"> Validar datos requeridos en el formulario</ngb-alert>
 <form action="">
-  <div class="formContainer">
+  <div class="formContainer" [ngClass]="{'hideElement':hideForm}">
     <ngb-alert [type]="'light'" [dismissible]="false">
       <h4> Completar información de Usuario</h4>
       <hr>

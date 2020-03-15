@@ -157,10 +157,10 @@
         </p>
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="formData.apep">
           <label ngbButtonLabel class="btn-primary">
-            <input ngbButton type="radio" [value]="1"> SI
+            <input ngbButton type="radio" value="SI"> SI
           </label>
           <label ngbButtonLabel class="btn-primary">
-            <input ngbButton type="radio" value="middle"> NO
+            <input ngbButton type="radio" value="NO"> NO
           </label>
         </div>
       </div>
@@ -179,19 +179,19 @@
       <hr>
       <div class="">
         <ngb-alert [dismissible]="false">
-          <input type="checkbox" id="vehicle1" name="TIP" value="1" [(ngModel)]="formData.tip">
-          <label for="vehicle1">&nbsp; Autorizo para el tratamiento de la información personal</label><br>
+          <input type="checkbox" id="tip" name="TIP" value="1" [(ngModel)]="formData.tip">
+          <label for="tip">&nbsp; Autorizo para el tratamiento de la información personal</label><br>
         </ngb-alert>
 
         <ngb-alert [dismissible]="false">
-          <input type="checkbox" id="vehicle2" name="AC" value="1" [(ngModel)]="formData.ac">
-          <label for="vehicle2">&nbsp; Autorizo con la finalidad de contactarme para el desarrollo de
+          <input type="checkbox" id="ac" name="AC" value="1" [(ngModel)]="formData.ac">
+          <label for="ac">&nbsp; Autorizo con la finalidad de contactarme para el desarrollo de
             actividades de publicidad y servicios.</label><br>
         </ngb-alert>
 
         <ngb-alert [dismissible]="false">
-          <input type="checkbox" id="vehicle3" name="FE" value="1" [(ngModel)]="formData.fe">
-          <label for="vehicle3">&nbsp; Estoy de acuerdo con las politicas de uso de firma electrónica.</label><br>
+          <input type="checkbox" id="fe" name="FE" value="1" [(ngModel)]="formData.fe">
+          <label for="fe">&nbsp; Estoy de acuerdo con las politicas de uso de firma electrónica.</label><br>
         </ngb-alert>
 
       </div>

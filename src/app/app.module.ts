@@ -1,17 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CookieService } from 'ngx-cookie-service';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CookieService} from 'ngx-cookie-service';
 
-import { MatToolbarModule,
+import {
+  MatToolbarModule,
   MatMenuModule,
   MatIconModule,
   MatButtonModule,
@@ -24,13 +25,16 @@ import { MatToolbarModule,
   MatSelectModule,
   MatListModule,
   MatGridListModule,
-  MatOptionModule} from '@angular/material';
-import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
-import { BasicDataTaskComponent } from './basic-data-task/basic-data-task.component';
-import { ValidateDataTaskComponent } from './validate-data-task/validate-data-task.component';
-import { UserDataTaskComponent } from './user-data-task/user-data-task.component';
+  MatOptionModule
+} from '@angular/material';
+import {HomeComponent} from './home/home.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {LoginComponent} from './login/login.component';
+import {BasicDataTaskComponent} from './basic-data-task/basic-data-task.component';
+import {ValidateDataTaskComponent} from './validate-data-task/validate-data-task.component';
+import {UserDataTaskComponent} from './user-data-task/user-data-task.component';
+import {RiskProfileTaskComponent} from './risk-profile-task/risk-profile-task.component';
+import {UserSurveyTaskComponent} from './user-survey-task/user-survey-task.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,9 @@ import { UserDataTaskComponent } from './user-data-task/user-data-task.component
     LoginComponent,
     BasicDataTaskComponent,
     ValidateDataTaskComponent,
-    UserDataTaskComponent
+    UserDataTaskComponent,
+    RiskProfileTaskComponent,
+    UserSurveyTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -69,4 +75,5 @@ import { UserDataTaskComponent } from './user-data-task/user-data-task.component
   providers: [CookieService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

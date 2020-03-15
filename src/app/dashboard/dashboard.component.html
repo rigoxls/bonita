@@ -30,9 +30,10 @@
   <div class="cCol secondCol">
     <app-user-task *ngIf="basicDataTask" [taskId]="taskId"></app-user-task>
     <app-user-data-task *ngIf="userDataTask" [taskId]="taskId"></app-user-data-task>
+    <app-risk-profile-task *ngIf="validateRiskProfile" [taskId]="taskId"></app-risk-profile-task>
     <app-validate-data-task *ngIf="securityQuestions" [taskId]="taskId"></app-validate-data-task>
     <ngb-alert [type]="'info'" [dismissible]="false"
-               *ngIf="!basicDataTask && !securityQuestions && !userDataTask">
+               *ngIf="!basicDataTask && !securityQuestions && !userDataTask && !validateRiskProfile">
       Seleccione una tarea para continuar
     </ngb-alert>
   </div>

@@ -1,26 +1,30 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BpmService} from '../bpm.service';
 
 @Component({
-  selector: 'app-validate-data-task',
-  templateUrl: './validate-data-task.component.html',
-  styleUrls: ['./validate-data-task.component.css']
+  selector: 'app-risk-profile-task',
+  templateUrl: './risk-profile-task.component.html',
+  styleUrls: ['./risk-profile-task.component.css']
 })
-export class ValidateDataTaskComponent implements OnInit {
+export class RiskProfileTaskComponent implements OnInit {
 
   private formErrors = false;
   private hideForm = false;
-
-  private formData = {
-    answer_1: null,
-    answer_2: null,
-    answer_3: null
-  };
 
   @Input() taskId: string = null;
 
   private validatedStep = false;
   private localVariables = {};
+
+  private formData = {
+    answer_profile_1: null,
+    answer_profile_2: null,
+    answer_profile_3: null,
+    answer_profile_4: null,
+    answer_profile_5: null,
+    validate_profile: null,
+    profile_comments: null
+  };
 
   constructor(private bpmService: BpmService) {
   }
@@ -34,7 +38,7 @@ export class ValidateDataTaskComponent implements OnInit {
   }
 
   sendDataToForm() {
-    if (!this.formData.answer_1 || !this.formData.answer_2 || !this.formData.answer_3) {
+    if (!this.formData.validate_profile  || !this.formData.profile_comments) {
       this.formErrors = true;
       this.validatedStep = true;
       return false;
@@ -44,5 +48,4 @@ export class ValidateDataTaskComponent implements OnInit {
       });
     }
   }
-
 }
