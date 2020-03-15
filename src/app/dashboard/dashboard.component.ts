@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   private securityQuestions = false;
   private userDataTask = false;
   private validateRiskProfile = false;
+  private userSurveyTask = false;
 
   private taskId = null;
   private caseId = null;
@@ -46,6 +47,7 @@ export class DashboardComponent implements OnInit {
         this.securityQuestions = false;
         this.validateRiskProfile = false;
         this.userDataTask = false;
+        this.userSurveyTask = false;
         break;
 
       case 'securityQuestions':
@@ -53,6 +55,7 @@ export class DashboardComponent implements OnInit {
         this.userDataTask = false;
         this.validateRiskProfile = false;
         this.securityQuestions = true;
+        this.userSurveyTask = false;
         break;
 
       case 'userData':
@@ -60,6 +63,7 @@ export class DashboardComponent implements OnInit {
         this.basicDataTask = false;
         this.validateRiskProfile = false;
         this.securityQuestions = false;
+        this.userSurveyTask = false;
         break;
 
       case 'validateRiskProfile':
@@ -67,6 +71,15 @@ export class DashboardComponent implements OnInit {
         this.basicDataTask = false;
         this.securityQuestions = false;
         this.validateRiskProfile = true;
+        this.userSurveyTask = false;
+        break;
+
+      case 'userSurveyTask':
+        this.userDataTask = false;
+        this.basicDataTask = false;
+        this.securityQuestions = false;
+        this.validateRiskProfile = false;
+        this.userSurveyTask = true;
         break;
     }
   }

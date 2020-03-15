@@ -32,8 +32,9 @@
     <app-user-data-task *ngIf="userDataTask" [taskId]="taskId"></app-user-data-task>
     <app-risk-profile-task *ngIf="validateRiskProfile" [taskId]="taskId"></app-risk-profile-task>
     <app-validate-data-task *ngIf="securityQuestions" [taskId]="taskId"></app-validate-data-task>
+    <app-user-survey-task *ngIf="userSurveyTask" [taskId]="taskId"></app-user-survey-task>
     <ngb-alert [type]="'info'" [dismissible]="false"
-               *ngIf="!basicDataTask && !securityQuestions && !userDataTask && !validateRiskProfile">
+               *ngIf="!basicDataTask && !securityQuestions && !userDataTask && !validateRiskProfile && !userSurveyTask">
       Seleccione una tarea para continuar
     </ngb-alert>
   </div>
