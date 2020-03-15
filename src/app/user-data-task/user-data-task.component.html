@@ -1,0 +1,45 @@
+<ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="formErrors"> Validar datos requeridos en el formulario</ngb-alert>
+<form action="">
+  <div class="formContainer">
+    <ngb-alert [type]="'light'" [dismissible]="false">
+      <h4> Completar información de Usuario</h4>
+      <hr>
+      <div class="container">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" [ngClass]="{'error': !formData.apellidos && validatedStep}"
+               placeholder="" [(ngModel)]="formData.apellidos">
+
+        <label for="nombres">Nombres</label>
+        <input type="text" id="nombres" name="nombres" [ngClass]="{'error': !formData.nombres && validatedStep}"
+               placeholder="" [(ngModel)]="formData.nombres">
+
+        <label for="fnacimiento">Fecha de nacimiento</label>
+        <input type="text" id="fnacimiento" name="fnacimiento" [ngClass]="{'error': !formData.fnacimiento && validatedStep}"
+               placeholder="DD/MM/YYYY" [(ngModel)]="formData.fnacimiento">
+
+        <label for="ciudad">Ciudad de nacimiento</label>
+        <select id="ciudad" name="ciudad" [(ngModel)]="formData.ciudad">
+          <option value="bogota">Bogotá</option>
+          <option value="barranquilla">Barranquilla</option>
+          <option value="cali">Calí</option>
+          <option value="medellin">Medellín</option>
+          <option value="manizales">Manizales</option>
+          <option value="cartagena">Cartagena</option>
+          <option value="bucaramanga">Bucaramanga</option>
+          <option value="pasto">Pasto</option>
+          <option value="neiva">Neiva</option>
+        </select>
+
+        <label for="telefono">Teléfono fijo</label>
+        <input type="text" id="telefono" name="telefono" placeholder="" [(ngModel)]="formData.telefono">
+
+      </div><br>
+    </ngb-alert>
+    <div class="button-right">
+      <button type="button" class="btn btn-primary" (click)="sendDataToForm()">
+        Continuar
+        <i class="fa fa-forward" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</form>

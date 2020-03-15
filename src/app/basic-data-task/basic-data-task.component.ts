@@ -19,6 +19,7 @@ export class BasicDataTaskComponent implements OnInit {
   @Input() taskId: string = null;
 
   private flagHideCompanyForm = false;
+  private conditionsNoAcepted = false;
 
   private formData = {
     cedula: null,
@@ -35,9 +36,9 @@ export class BasicDataTaskComponent implements OnInit {
     salario: null,
     pep: null,
     apep: null,
-    tip: null,
-    ac: null,
-    fe: null
+    tip: null, // tratamiento información personal
+    ac: null, // autorizo contacto
+    fe: null // firma electronica
   };
 
   private validatedStep = false;
@@ -51,18 +52,25 @@ export class BasicDataTaskComponent implements OnInit {
   ngOnInit() {
   }
 
-  sendDataToForm() {
-    this.bpmService.executeTask(this.taskId, this.formData);
-  }
-
-  nextForm(nextFormId) {
+  hideAllSteps(): void {
     this.step1 = false;
     this.step2 = false;
     this.step3 = false;
     this.step4 = false;
     this.step5 = false;
     this.step6 = false;
+  }
 
+  sendDataToForm() {
+    this.hideAllSteps();
+    this.bpmService.executeTask(this.taskId, this.formData);
+    if (!this.formData.fe && !this.formData.tip) {
+      this.conditionsNoAcepted = true;
+    }
+  }
+
+  nextForm(nextFormId) {
+    this.hideAllSteps();
     let isValid = false;
 
     switch (nextFormId) {

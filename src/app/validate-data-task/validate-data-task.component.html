@@ -5,15 +5,15 @@
       <h4> Vefificación de identidad</h4>
       <hr>
       <div class="container">
-        <label for="answer_1">Número de la cédula de ciudadania</label>
+        <label for="answer_1">{{localVariables['question_1']}}</label>
         <input type="text" id="answer_1" name="answer_1" [ngClass]="{'error': !formData.answer_1 && validatedStep}"
                placeholder="" [(ngModel)]="formData.answer_1">
 
-        <label for="answer_2">¿Cuál es tú correo electrónico?</label>
+        <label for="answer_2">{{localVariables['question_2']}}</label>
         <input type="text" id="answer_2" name="answer_2" [ngClass]="{'error': !formData.answer_2 && validatedStep}"
                placeholder="" [(ngModel)]="formData.answer_2">
 
-        <label for="answer_3">¿Cuál es tú  número celular?</label>
+        <label for="answer_3">{{localVariables['question_3']}}</label>
         <input type="text" id="answer_3" name="answer_3" [ngClass]="{'error': !formData.answer_3 && validatedStep}"
                placeholder="" [(ngModel)]="formData.answer_3">
       </div><br>

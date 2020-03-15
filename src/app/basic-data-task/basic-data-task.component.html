@@ -175,7 +175,7 @@
 
   <div class="formContainer" [ngClass]="{'hideContainer': step6===false}">
     <ngb-alert [type]="'light'" [dismissible]="false">
-      <h4> ¿Autorizas las condiciones?</h4>
+      <h4> Para continuar acepta las condiciones</h4>
       <hr>
       <div class="">
         <ngb-alert [dismissible]="false">
@@ -203,4 +203,8 @@
       </button>
     </div>
   </div>
+
+  <ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="conditionsNoAcepted">
+    Lo sentimos, no has aceptado los términos y condiciones por lo tanto se puede continuar con el proceso de afiliación digital
+  </ngb-alert>
 </form>

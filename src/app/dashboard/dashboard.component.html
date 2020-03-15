@@ -20,7 +20,7 @@
       <div *ngFor="let task of tasks">
         <ngb-alert [type]="'info'" [dismissible]="false" class="listitem"
                    *ngIf="task.state === 'ready'"
-                   (click)="takeTask(task.id, task.displayDescription)">
+                   (click)="takeTask(task.id, task.caseId, task.displayDescription)">
           [{{task.id}}] - {{task.displayName}}
         </ngb-alert>
       </div>
@@ -29,8 +29,10 @@
   </div>
   <div class="cCol secondCol">
     <app-user-task *ngIf="basicDataTask" [taskId]="taskId"></app-user-task>
+    <app-user-data-task *ngIf="userDataTask" [taskId]="taskId"></app-user-data-task>
     <app-validate-data-task *ngIf="securityQuestions" [taskId]="taskId"></app-validate-data-task>
-    <ngb-alert [type]="'info'" [dismissible]="false" *ngIf="!basicDataTask && !securityQuestions">
+    <ngb-alert [type]="'info'" [dismissible]="false"
+               *ngIf="!basicDataTask && !securityQuestions && !userDataTask">
       Seleccione una tarea para continuar
     </ngb-alert>
   </div>

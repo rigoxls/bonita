@@ -30,6 +30,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { BasicDataTaskComponent } from './basic-data-task/basic-data-task.component';
 import { ValidateDataTaskComponent } from './validate-data-task/validate-data-task.component';
+import { UserDataTaskComponent } from './user-data-task/user-data-task.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ValidateDataTaskComponent } from './validate-data-task/validate-data-ta
     DashboardComponent,
     LoginComponent,
     BasicDataTaskComponent,
-    ValidateDataTaskComponent
+    ValidateDataTaskComponent,
+    UserDataTaskComponent
   ],
   imports: [
     BrowserModule,

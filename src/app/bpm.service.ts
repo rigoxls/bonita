@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
 
 import {config} from './resources/config';
 
@@ -39,7 +39,8 @@ export class BpmService {
       'X-Bonita-API-Token': sessionToken
     };
     this.http.post<any>(`${config.bonitaUrl}/API/bpm/process/${processInfo.id}/instantiation`, {},
-      {headers}).subscribe(data => {},
+      {headers}).subscribe(data => {
+      },
       error => {
         console.log(error);
       });
@@ -63,18 +64,43 @@ export class BpmService {
     return tasks;
   }
 
-  executeTask(userTaskId, data) {
+  executeTask(userTaskId, data): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const sessionToken = this.cookieService.get('X-Bonita-API-Token');
+      const processInfo = JSON.parse(localStorage.getItem('processInfo'));
+      const headers = {
+        'Content-Type': 'application/json',
+        'X-Bonita-API-Token': sessionToken
+      };
+      this.http.post<any>(`${config.bonitaUrl}/API/bpm/userTask/${userTaskId}/execution?assign=true`, data,
+        {headers}).subscribe(data => {
+          resolve(data);
+        },
+        error => {
+          console.log(error);
+          reject(error);
+        });
+    });
+  }
+
+  async getCaseIdVariables() {
     const sessionToken = this.cookieService.get('X-Bonita-API-Token');
     const processInfo = JSON.parse(localStorage.getItem('processInfo'));
+    const caseId = localStorage.getItem('caseId');
+    const variables = {};
     const headers = {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
       'X-Bonita-API-Token': sessionToken
     };
-    this.http.post<any>(`${config.bonitaUrl}/API/bpm/userTask/${userTaskId}/execution?assign=true`, data,
-      {headers}).subscribe(data => {},
+    await this.http.get<any>(`${config.bonitaUrl}/API/bpm/caseVariable?p=0&c=50&f=case\_id%3d${caseId}`,
+      {headers}).toPromise().then(data => {
+        for (const value of data) {
+          variables[value.name] = value.value;
+        }
+      },
       error => {
-        console.log(error);
       });
+    return variables;
   }
 
 }

@@ -12,7 +12,9 @@ export class DashboardComponent implements OnInit {
   private tasks: Array<any>;
   private basicDataTask = false;
   private securityQuestions = false;
+  private userDataTask = false;
   private taskId = null;
+  private caseId = null;
 
   constructor(
     private bpmService: BpmService,
@@ -30,17 +32,29 @@ export class DashboardComponent implements OnInit {
     this.tasks = await this.bpmService.getTasksList();
   }
 
-  takeTask(taskId: number, displayDescription: string) {
+  takeTask(taskId: number, caseId: number, displayDescription: string) {
     this.taskId = taskId;
+    this.caseId = caseId;
+
+    localStorage.setItem('caseId', this.caseId);
 
     switch (displayDescription) {
       case 'basicDataTask':
         this.basicDataTask = true;
         this.securityQuestions = false;
+        this.userDataTask = false;
         break;
+
       case 'securityQuestions':
         this.basicDataTask = false;
+        this.userDataTask = false;
         this.securityQuestions = true;
+        break;
+
+      case 'userData':
+        this.userDataTask = true;
+        this.basicDataTask = false;
+        this.securityQuestions = false;
         break;
     }
   }
